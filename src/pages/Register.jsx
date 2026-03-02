@@ -2,17 +2,25 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
+import useAuth from "../hooks/UseAuth";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    console.log(showPassword)
+    const { createUser } = useAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        console.log(data)
+        const { email, password } = data;
+        createUser(email, password)
+            .then(result => console.log(result.user))
+            .catch(error => console.log(error))
+
+    };
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">

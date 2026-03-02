@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import Register from "./pages/Register";
+import FirebaseProvider from "./firebase/FirebaseProvider";
 
 const router = createBrowserRouter([
   {
@@ -28,5 +29,7 @@ const router = createBrowserRouter([
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
-  <RouterProvider router={router} />,
+  <FirebaseProvider>
+    <RouterProvider router={router} />,
+  </FirebaseProvider>
 );
