@@ -2,7 +2,8 @@ import { Link } from "react-router";
 import useAuth from "../../hooks/UseAuth";
 
 const Header = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -55,14 +56,14 @@ const Header = () => {
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><a onClick={() => logOut()}>Logout</a></li>
                         </ul>
                     </div>
-                </div> 
-                : <div className="navbar-end space-x-2">
-                    <Link to='/login' className="btn">Login</Link>
-                    <Link to='/register' className="btn">Signup</Link>
                 </div>
+                    : <div className="navbar-end space-x-2">
+                        <Link to='/login' className="btn">Login</Link>
+                        <Link to='/register' className="btn">Signup</Link>
+                    </div>
             }
         </div>
     );
