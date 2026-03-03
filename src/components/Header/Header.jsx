@@ -4,8 +4,14 @@ import useAuth from "../../hooks/UseAuth";
 const Header = () => {
     const { user, logOut } = useAuth();
 
+    const links = <>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/add-transaction">Add Transaction</Link></li>
+        <li><Link to="/my-transactions">My Transaction</Link></li>
+        <li><Link to="/reports">Reports</Link></li>
+    </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <nav className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -14,32 +20,15 @@ const Header = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        {links}
+
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2 bg-base-100 w-40 z-1">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    {links}
                 </ul>
             </div>
             {
@@ -65,7 +54,7 @@ const Header = () => {
                         <Link to='/register' className="btn">Signup</Link>
                     </div>
             }
-        </div>
+        </nav>
     );
 };
 
