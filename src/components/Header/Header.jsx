@@ -6,9 +6,13 @@ const Header = () => {
 
     const links = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/add-transaction">Add Transaction</Link></li>
-        <li><Link to="/my-transactions">My Transaction</Link></li>
-        <li><Link to="/reports">Reports</Link></li>
+        {
+            user && <>
+                <li><Link to="/add-transaction">Add Transaction</Link></li>
+                <li><Link to="/my-transactions">My Trasaction</Link></li>
+                <li><Link to="/reports">Reports</Link></li>
+            </>
+        }
     </>
     return (
         <nav className="navbar bg-base-100 shadow-sm">

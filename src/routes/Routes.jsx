@@ -6,7 +6,7 @@ import Register from "../pages/Register";
 import AddTransaction from '../components/AddTransaction/AddTransaction'
 import MyTransaction from '../components/MyTransaction/MyTransaction';
 import Reports from '../components/Reports/Reports';
-
+import ProtectedRoute from '../protected/ProtectedRoute';
 const router = createBrowserRouter([
     {
         path: "/",
@@ -23,15 +23,27 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-transaction",
-                Component: AddTransaction,
+                Component: () => (
+                    <ProtectedRoute>
+                        <AddTransaction></AddTransaction>
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "my-transactions",
-                Component: MyTransaction,
+                Component: () => (
+                    <ProtectedRoute>
+                        <MyTransaction></MyTransaction>
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "reports",
-                Component: Reports,
+                Component: () => (
+                    <ProtectedRoute>
+                        <Reports></Reports>
+                    </ProtectedRoute>
+                ),
             },
         ],
     },

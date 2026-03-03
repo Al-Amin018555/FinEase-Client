@@ -1,9 +1,11 @@
-const ProtectedRoute = () => {
-    return (
-        <div>
+import useAuth from "../hooks/UseAuth";
 
-        </div>
-    );
+const ProtectedRoute = ({ children }) => {
+    const { user } = useAuth();
+    if (user) {
+        return children;
+    }
+    return "";
 };
 
 export default ProtectedRoute;
