@@ -6,7 +6,7 @@ import useAuth from "../hooks/UseAuth";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser,setUser } = useAuth();
+    const { createUser, setUser, profileUpdate } = useAuth();
     const {
         register,
         handleSubmit,
@@ -15,11 +15,13 @@ const Register = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        const { email, password } = data;
+        const { email, password, name, photo } = data;
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
+                profileUpdate(name, photo)
                 setUser(result.user)
+
             })
             .catch(error => console.log(error))
 
