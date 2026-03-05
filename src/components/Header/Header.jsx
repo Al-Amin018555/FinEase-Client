@@ -30,7 +30,7 @@ const Header = () => {
         }
     </>
     return (
-        <nav className={`navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+        <nav className={`navbar sticky top-0 z-50 bg-base-100/80 text-base-content hover:text-primary backdrop-blur-md transition-all duration-300 ${isScrolled ? "shadow-md" : ""
             }`}>
             <div className="navbar-start">
                 <div className="dropdown">

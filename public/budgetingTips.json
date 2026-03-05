@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "The 50/30/20 Rule",
+        "description": "Allocate 50% to needs, 30% to wants, and 20% to savings for a truly balanced financial life.",
+        "img": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    },
+    {
+        "id": 2,
+        "title": "Track Every Expense",
+        "description": "Record all transactions — even small ones. Daily coffee expenses add up to surprisingly large totals by month end.",
+        "img": "https://cdn-icons-png.flaticon.com/512/747/747310.png"
+    },
+    {
+        "id": 3,
+        "title": "Build an Emergency Fund",
+        "description": "Set aside 3–6 months of living expenses in a liquid account to protect yourself from unexpected shocks.",
+        "img": "https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+    },
+    {
+        "id": 4,
+        "title": "Automate Your Savings",
+        "description": "Set up automatic transfers on payday. 'Pay yourself first' ensures consistent savings before lifestyle spending.",
+        "img": "https://cdn-icons-png.flaticon.com/512/1828/1828919.png"
+    },
+    {
+        "id": 5,
+        "title": "Cut Subscription Bloat",
+        "description": "Audit recurring subscriptions quarterly. Most people forget services they barely use — cancelling frees real cash.",
+        "img": "https://cdn-icons-png.flaticon.com/512/2921/2921222.png"
+    },
+    {
+        "id": 6,
+        "title": "Review Monthly Reports",
+        "description": "Spending patterns reveal habits. Monthly reviews help you spot problem areas before they become serious issues.",
+        "img": "https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
+    }
+]
