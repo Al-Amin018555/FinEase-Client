@@ -15,7 +15,7 @@ const Header = () => {
         }
     </>
     return (
-        <nav className="navbar bg-base-100 shadow-sm">
+        <nav className="navbar bg-base-100 text-base-content hover:text-primary shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,8 +54,8 @@ const Header = () => {
                     </div>
                 </div>
                     : <div className="navbar-end space-x-2">
-                        <Link to='/login' className="btn">Login</Link>
-                        <Link to='/register' className="btn">Signup</Link>
+                        <Link to='/login' className="btn btn-outline btn-primary">Login</Link>
+                        <Link to='/register' className="btn btn-primary">Signup</Link>
                     </div>
             }
         </nav>

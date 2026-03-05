@@ -2,10 +2,10 @@ import { Link } from "react-router";
 
 const Footer = () => {
     return (
-        <div className="bg-primary text-white">
-            <footer className="footer sm:footer-horizontal max-w-7xl mx-auto p-12">
+        <div className="bg-base-200 text-base-content">
+            <footer className="footer sm:footer-horizontal max-w-7xl mx-auto p-10">
                 <aside>
-                    <h2 className="font-bold text-5xl"><span className="text-accent">Fin</span>Ease</h2>
+                    <h2 className="font-bold text-4xl"><span className="text-accent">Fin</span>Ease</h2>
                     <p>
                         Your all-in-one personal finance <br />manager. Track smarter, save better, <br />live freer
                     </p>
@@ -28,7 +28,10 @@ const Footer = () => {
                     <a className="link link-hover">Privacy policy</a>
                 </nav>
             </footer>
-            <p className="text-center pb-12">Copyright © {new Date().getFullYear()} - All right reserved</p>
+            <div>
+                <p className="text-center bg-neutral p-2">Copyright © {new Date().getFullYear()} - All right reserved</p>
+            </div>
+            <div className="border-2"></div>
         </div>
     );
 };
