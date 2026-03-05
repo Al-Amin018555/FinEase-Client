@@ -1,8 +1,23 @@
 import { Link } from "react-router";
 import useAuth from "../../hooks/UseAuth";
+import { useEffect, useState } from "react";
 
 const Header = () => {
     const { user, logOut } = useAuth();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 10) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [])
 
     const links = <>
         <li><Link to="/">Home</Link></li>
@@ -15,7 +30,8 @@ const Header = () => {
         }
     </>
     return (
-        <nav className="navbar bg-base-100 text-base-content hover:text-primary shadow-sm">
+        <nav className={`navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+            }`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +44,7 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="text-base-content font-bold text-4xl"><span className="text-accent">Fin</span>Ease</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
