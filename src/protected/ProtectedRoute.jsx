@@ -1,7 +1,7 @@
 import useAuth from "../hooks/UseAuth";
 
 const ProtectedRoute = ({ children }) => {
-    const { user } = useAuth();
+    const { user } = useAuth();  
     if (user) {
         return children;
     }

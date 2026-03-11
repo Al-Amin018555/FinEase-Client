@@ -1,7 +1,35 @@
+import { useEffect, useState } from "react";
+import useAuth from "../../hooks/UseAuth";
+import TransactionCard from "../TransactionCard/TransactionCard";
+import Loader from "../Loader/Loader";
+
 const MyTransaction = () => {
+    const { user } = useAuth();
+
+    const [transactions, setTransactions] = useState([])
+    const [dataLoading, setDataLoading] = useState(true);
+    console.log(transactions);
+    useEffect(() => {
+
+        fetch(`http://localhost:3000/my-transactions/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setTransactions(data)
+                setDataLoading(false)
+            })
+            .catch(error => console.log(error))
+    }, [])
+    if (dataLoading) {
+        return <Loader></Loader>;
+    }
     return (
-        <div>
-            my transaction
+        <div className="max-w-7xl mx-auto my-6 md:my-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    transactions.map(transaction => <TransactionCard key={transaction._id} transaction={transaction}></TransactionCard>)
+                }
+            </div>
+
         </div>
     );
 };

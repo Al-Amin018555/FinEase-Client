@@ -27,6 +27,7 @@ const router = createBrowserRouter([
                     <ProtectedRoute>
                         <AddTransaction></AddTransaction>
                     </ProtectedRoute>
+                
                 ),
             },
             {
