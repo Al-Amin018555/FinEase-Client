@@ -7,6 +7,7 @@ import AddTransaction from '../components/AddTransaction/AddTransaction'
 import MyTransaction from '../components/MyTransaction/MyTransaction';
 import Reports from '../components/Reports/Reports';
 import ProtectedRoute from '../protected/ProtectedRoute';
+import UpdateTransaction from "../components/UpdateTransaction/UpdateTransaction";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
                     <ProtectedRoute>
                         <AddTransaction></AddTransaction>
                     </ProtectedRoute>
-                
+
                 ),
             },
             {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: 'transaction/update/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/transaction/${params.id}`),
+                Component: UpdateTransaction,
+            }
         ],
     },
 ]);

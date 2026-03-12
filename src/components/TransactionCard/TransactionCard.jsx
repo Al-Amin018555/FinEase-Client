@@ -11,10 +11,11 @@ import {
 
 import { MdAttachMoney } from "react-icons/md";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+import { Link } from "react-router";
 
 const TransactionCard = ({ transaction }) => {
-
-  const { type, category, amount, date } = transaction;
+  // console.log(transaction)
+  const { _id, type, category, amount, date } = transaction;
 
   const getCategoryIcon = () => {
 
@@ -110,14 +111,12 @@ const TransactionCard = ({ transaction }) => {
             View
 
           </button>
-
-          <button className="btn btn-warning text-warning-content btn-sm flex items-center gap-2">
-
-            <FiEdit className="text-lg" />
-
-            Update
-
-          </button>
+          <Link to={`/transaction/update/${_id}`}>
+            <button className="btn btn-warning text-warning-content btn-sm flex items-center gap-2">
+              <FiEdit className="text-lg" />
+              Update
+            </button>
+          </Link>
 
           <button className="btn btn-error btn-sm flex items-center gap-2">
 
