@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const UpdateTransaction = () => {
   const { user } = useAuth();
@@ -42,8 +43,14 @@ const UpdateTransaction = () => {
 
         console.log("updated result", data);
 
-        if (data.modifiedCount > 0) {
-          alert("Transaction Updated Successfully");
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your transaction updated successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
           navigate("/");
         }
 
@@ -88,13 +95,12 @@ const UpdateTransaction = () => {
 
           <select
             {...register("type", { required: true })}
-            className={`select select-bordered w-full outline-0 ${
-              type === "Income"
+            className={`select select-bordered w-full outline-0 ${type === "Income"
                 ? "border-success"
                 : type === "Expense"
-                ? "border-error"
-                : ""
-            }`}
+                  ? "border-error"
+                  : ""
+              }`}
           >
             <option value="">Select Type</option>
             <option value="Income">Income</option>
