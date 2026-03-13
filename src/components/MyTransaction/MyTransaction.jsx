@@ -26,7 +26,7 @@ const MyTransaction = () => {
         <div className="max-w-7xl mx-auto my-6 md:my-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
-                    transactions.map(transaction => <TransactionCard key={transaction._id} transaction={transaction}></TransactionCard>)
+                    transactions.map(transaction => <TransactionCard key={transaction._id} transaction={transaction} setTransactions={setTransactions} transactions={transactions} ></TransactionCard>)
                 }
             </div>
 

@@ -12,8 +12,9 @@ import {
 import { MdAttachMoney } from "react-icons/md";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
-const TransactionCard = ({ transaction }) => {
+const TransactionCard = ({ transaction,transactions,setTransactions }) => {
   // console.log(transaction)
   const { _id, type, category, amount, date } = transaction;
 
@@ -44,6 +45,42 @@ const TransactionCard = ({ transaction }) => {
     }
 
   };
+
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/transaction/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            if (data.deletedCount) {
+
+              const remainingTransactions = transactions.filter(transaction => transaction._id !== id);
+              console.log(remainingTransactions);
+              setTransactions(remainingTransactions)
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+          .catch(error => console.log(error))
+
+      }
+    });
+  }
 
   return (
 
@@ -118,7 +155,7 @@ const TransactionCard = ({ transaction }) => {
             </button>
           </Link>
 
-          <button className="btn btn-error btn-sm flex items-center gap-2">
+          <button onClick={() => handleDelete(_id)} className="btn btn-error btn-sm flex items-center gap-2">
 
             <FiTrash2 className="text-lg" />
 
