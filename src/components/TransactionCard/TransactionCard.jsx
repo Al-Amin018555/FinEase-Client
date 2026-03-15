@@ -14,7 +14,7 @@ import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const TransactionCard = ({ transaction,transactions,setTransactions }) => {
+const TransactionCard = ({ transaction, transactions, setTransactions }) => {
   // console.log(transaction)
   const { _id, type, category, amount, date } = transaction;
 
@@ -140,14 +140,12 @@ const TransactionCard = ({ transaction,transactions,setTransactions }) => {
         {/* Buttons */}
 
         <div className="card-actions justify-end mt-4 gap-2">
-
-          <button className="btn btn-info text-primary-content btn-sm flex items-center gap-2">
-
-            <FiEye className="text-lg" />
-
-            View
-
-          </button>
+          <Link to={`/transaction/${_id}`}>
+            <button className="btn btn-info text-primary-content btn-sm flex items-center gap-2">
+              <FiEye className="text-lg" />
+              View
+            </button>
+          </Link>
           <Link to={`/transaction/update/${_id}`}>
             <button className="btn btn-warning text-warning-content btn-sm flex items-center gap-2">
               <FiEdit className="text-lg" />
