@@ -1,38 +1,164 @@
 import { Link } from "react-router";
+import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <div className="bg-base-200 text-base-content">
-            <footer className="footer sm:footer-horizontal max-w-7xl mx-auto p-10">
-                <aside>
-                    <h2 className="font-bold text-4xl"><span className="text-accent">Fin</span>Ease</h2>
-                    <p>
-                        Your all-in-one personal finance <br />manager. Track smarter, save better, <br />live freer
-                    </p>
-                </aside>
-                <nav>
-                    <h6 className="footer-title">Product</h6>
-                    <Link to='/' className="link link-hover">Home</Link>
-                    <Link to='/add-transaction' className="link link-hover">Add Transaction</Link>
-                    <Link to='/my-transactions' className="link link-hover">My Transaction</Link>
-                    <Link to='/reports' className="link link-hover">Reports</Link>
-                </nav>
-                <nav>
-                    <h6 className="footer-title">Account</h6>
-                    <a className="link link-hover">Login</a>
-                    <a className="link link-hover">Sign Up</a>
-                    <a className="link link-hover">My Profile</a>
-                </nav>
-                <nav>
-                    <h6 className="footer-title">Support</h6>
-                    <a className="link link-hover">Privacy policy</a>
-                </nav>
-            </footer>
-            <div>
-                <p className="text-center bg-base-200 text-base-content p-2">Copyright © {new Date().getFullYear()} - All right reserved</p>
-            </div>
+  return (
+    <footer className="bg-base-300 text-base-content border-t border-base-200">
+
+      {/* Top Accent Line */}
+
+      <div className="h-1 w-full bg-gradient-to-r from-primary via-secondary to-accent"></div>
+
+      <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+        {/* Brand */}
+
+        <div className="space-y-4">
+
+          <h2 className="font-bold text-4xl tracking-tight">
+            <span className="text-accent drop-shadow-sm">Fin</span>
+            <span className="text-primary">Ease</span>
+          </h2>
+
+          <p className="text-base-content/70 leading-relaxed">
+            Your all-in-one personal finance manager. Track smarter,
+            save better and take control of your money.
+          </p>
+
+          {/* Social icons */}
+
+          <div className="flex gap-3 mt-4">
+
+            <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <FaFacebook />
+            </a>
+
+            <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <FaTwitter />
+            </a>
+
+            <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <FaGithub />
+            </a>
+
+            <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <FaLinkedin />
+            </a>
+
+          </div>
+
         </div>
-    );
+
+        {/* Product */}
+
+        <div>
+
+          <h6 className="footer-title text-primary">Product</h6>
+
+          <div className="flex flex-col gap-2">
+
+            <Link to="/" className="link link-hover hover:text-primary">
+              Home
+            </Link>
+
+            <Link to="/add-transaction" className="link link-hover hover:text-primary">
+              Add Transaction
+            </Link>
+
+            <Link to="/my-transactions" className="link link-hover hover:text-primary">
+              My Transactions
+            </Link>
+
+            <Link to="/reports" className="link link-hover hover:text-primary">
+              Reports
+            </Link>
+
+          </div>
+
+        </div>
+
+        {/* Account */}
+
+        <div>
+
+          <h6 className="footer-title text-primary">Account</h6>
+
+          <div className="flex flex-col gap-2">
+
+            <a className="link link-hover hover:text-primary">
+              Login
+            </a>
+
+            <a className="link link-hover hover:text-primary">
+              Sign Up
+            </a>
+
+            <a className="link link-hover hover:text-primary">
+              My Profile
+            </a>
+
+          </div>
+
+        </div>
+
+        {/* Support */}
+
+        <div>
+
+          <h6 className="footer-title text-primary">Support</h6>
+
+          <div className="flex flex-col gap-2">
+
+            <a className="link link-hover hover:text-primary">
+              Privacy Policy
+            </a>
+
+            <a className="link link-hover hover:text-primary">
+              Terms of Service
+            </a>
+
+            <a className="link link-hover hover:text-primary">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Bottom bar */}
+
+      <div className="border-t border-base-200">
+
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
+
+          <p className="text-sm text-base-content/70">
+            © {new Date().getFullYear()} FinEase — All rights reserved
+          </p>
+
+          <div className="flex gap-6 text-sm">
+
+            <a className="hover:text-primary cursor-pointer">
+              Privacy
+            </a>
+
+            <a className="hover:text-primary cursor-pointer">
+              Terms
+            </a>
+
+            <a className="hover:text-primary cursor-pointer">
+              Support
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </footer>
+  );
 };
 
 export default Footer;
