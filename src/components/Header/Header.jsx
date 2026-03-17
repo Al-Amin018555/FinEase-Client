@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import useAuth from "../../hooks/UseAuth";
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
     const { user, logOut } = useAuth();
@@ -26,6 +26,7 @@ const Header = () => {
                 <li><Link to="/add-transaction">Add Transaction</Link></li>
                 <li><Link to="/my-transactions">My Trasaction</Link></li>
                 <li><Link to="/reports">Reports</Link></li>
+                <li><Link to="/my-profile">My Profile</Link></li>
             </>
         }
     </>

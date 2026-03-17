@@ -9,6 +9,7 @@ import Reports from '../components/Reports/Reports';
 import ProtectedRoute from '../protected/ProtectedRoute';
 import UpdateTransaction from "../components/UpdateTransaction/UpdateTransaction";
 import TransactionDetails from "../pages/TransactionDetails";
+import MyProfile from "../pages/MyProfile";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -65,7 +66,15 @@ const router = createBrowserRouter([
                         <TransactionDetails></TransactionDetails>
                     </ProtectedRoute>
                 )
-            }
+            },
+            {
+                path: 'my-profile',
+                Component: () => (
+                    <ProtectedRoute>
+                        <MyProfile></MyProfile>
+                    </ProtectedRoute>
+                ),
+            },
         ],
     },
 ]);

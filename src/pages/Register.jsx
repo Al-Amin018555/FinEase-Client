@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
-import useAuth from "../hooks/UseAuth";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);

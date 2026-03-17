@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/UseAuth";
 import TransactionCard from "../TransactionCard/TransactionCard";
 import Loader from "../Loader/Loader";
+import useAuth from "../../hooks/useAuth";
 
 const MyTransaction = () => {
     const { user } = useAuth();
