@@ -5,11 +5,11 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddTransaction from '../components/AddTransaction/AddTransaction'
 import MyTransaction from '../components/MyTransaction/MyTransaction';
-import Reports from '../components/Reports/Reports';
 import ProtectedRoute from '../protected/ProtectedRoute';
 import UpdateTransaction from "../components/UpdateTransaction/UpdateTransaction";
 import TransactionDetails from "../pages/TransactionDetails";
 import MyProfile from "../pages/MyProfile";
+import Reports from "../pages/Reports";
 const router = createBrowserRouter([
     {
         path: "/",

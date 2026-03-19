@@ -12,8 +12,7 @@ import {
     Legend,
     ResponsiveContainer
 } from "recharts";
-import useAuth from "../../hooks/useAuth";
-
+import useAuth from "../hooks/useAuth";
 const Reports = () => {
     const { user } = useAuth()
     const [transactions, setTransactions] = useState([]);
