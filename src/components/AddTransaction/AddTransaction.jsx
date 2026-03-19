@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 
 const AddTransaction = () => {
 
