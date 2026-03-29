@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddTransaction = () => {
 
@@ -27,7 +28,17 @@ const AddTransaction = () => {
       body: JSON.stringify(transactionData)
     })
       .then(res => res.json())
-      .then(data => console.log("transcation after post ", data))
+      .then(data => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Transaction added successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
 
     console.log(transactionData);
 
