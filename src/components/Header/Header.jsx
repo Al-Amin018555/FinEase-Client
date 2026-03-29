@@ -45,7 +45,12 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <a className="text-base-content font-bold text-4xl"><span className="text-accent">Fin</span>Ease</a>
+                <Link to='/' className="text-base-content font-bold text-4xl">
+                    <h2 className="font-bold text-4xl tracking-tight">
+                        <span className="text-accent drop-shadow-sm">Fin</span>
+                        <span className="text-primary">Ease</span>
+                    </h2>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
