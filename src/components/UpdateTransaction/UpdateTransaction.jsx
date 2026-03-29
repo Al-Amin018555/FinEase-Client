@@ -51,7 +51,7 @@ const UpdateTransaction = () => {
             showConfirmButton: false,
             timer: 1500
           });
-          navigate("/");
+          navigate(`/transaction/${transaction._id}`);
         }
 
       });
@@ -96,10 +96,10 @@ const UpdateTransaction = () => {
           <select
             {...register("type", { required: true })}
             className={`select select-bordered w-full outline-0 ${type === "Income"
-                ? "border-success"
-                : type === "Expense"
-                  ? "border-error"
-                  : ""
+              ? "border-success"
+              : type === "Expense"
+                ? "border-error"
+                : ""
               }`}
           >
             <option value="">Select Type</option>

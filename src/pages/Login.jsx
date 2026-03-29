@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/UseAuth";
 
 const Login = () => {
     const { logIn, googleLogIn } = useAuth();
     const navigate = useNavigate();
-    
+    const location = useLocation();
+    console.log(location);
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -13,7 +14,8 @@ const Login = () => {
         logIn(email, password)
             .then(() => {
                 console.log("successfully logged in")
-                navigate('/')
+                location.pathname ? navigate(`/${location.state}`) : navigate('/');
+
             })
             .catch(error => console.log(error))
     }
@@ -21,7 +23,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogIn()
             .then(() => {
-                navigate('/')
+                location.pathname ? navigate(`/${location.state}`) : navigate('/');
             })
             .catch(error => console.log(error))
     }
