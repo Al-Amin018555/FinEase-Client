@@ -30,7 +30,7 @@ const UpdateTransaction = () => {
       updatedAt: new Date()
     };
 
-    fetch(`http://localhost:3000/transaction/update/${transaction._id}`, {
+    fetch(`https://fin-ease-server-seven.vercel.app/transaction/update/${transaction._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json"

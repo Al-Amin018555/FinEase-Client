@@ -12,7 +12,7 @@ const MyTransaction = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:3000/my-transactions/${user.email}`)
+        fetch(`https://fin-ease-server-seven.vercel.app/my-transactions/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setTransactions(data)

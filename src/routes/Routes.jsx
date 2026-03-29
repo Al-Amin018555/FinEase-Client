@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'transaction/update/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/transaction/${params.id}`),
+                loader: ({ params }) => fetch(`https://fin-ease-server-seven.vercel.app/transaction/${params.id}`),
                 Component: () => (
                     <ProtectedRoute>
                         <UpdateTransaction></UpdateTransaction>
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'transaction/:id',
-                loader: ({params}) => fetch(`http://localhost:3000/transaction/${params.id}`),
+                loader: ({params}) => fetch(`https://fin-ease-server-seven.vercel.app/transaction/${params.id}`),
                 Component: () => (
                     <ProtectedRoute>
                         <TransactionDetails></TransactionDetails>

@@ -20,7 +20,7 @@ const AddTransaction = () => {
       createdAt: new Date()
     };
 
-    fetch("http://localhost:3000/add-transaction", {
+    fetch("https://fin-ease-server-seven.vercel.app/add-transaction", {
       method: "POST",
       headers: {
         'content-type': 'application/json',
