@@ -3,7 +3,6 @@ import useAuth from "../hooks/UseAuth";
 
 const ProtectedRoute = ({ children }) => {
     const location = useLocation();
-    console.log(location);
     const { user } = useAuth();  
     if (user) {
         return children;

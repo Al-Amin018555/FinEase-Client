@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 const UpdateTransaction = () => {
   const { user } = useAuth();
   const transaction = useLoaderData();
-  console.log(transaction);
   const navigate = useNavigate();
 
   const { register, handleSubmit, reset, watch } = useForm();
@@ -40,8 +39,6 @@ const UpdateTransaction = () => {
     })
       .then(res => res.json())
       .then(data => {
-
-        console.log("updated result", data);
 
         if (data.modifiedCount) {
           Swal.fire({

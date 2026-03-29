@@ -40,7 +40,6 @@ const AddTransaction = () => {
         }
       })
 
-    console.log(transactionData);
 
     reset();
   };

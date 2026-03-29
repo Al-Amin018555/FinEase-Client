@@ -1,11 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { logIn, googleLogIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -13,11 +13,17 @@ const Login = () => {
         const password = form.password.value;
         logIn(email, password)
             .then(() => {
-                console.log("successfully logged in")
                 location.pathname ? navigate(`/${location.state}`) : navigate('/');
 
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error,
+                });
+            })
+
     }
 
     const handleGoogleLogin = () => {
@@ -25,7 +31,14 @@ const Login = () => {
             .then(() => {
                 location.pathname ? navigate(`/${location.state}`) : navigate('/');
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error,
+                });
+            })
+
     }
     return (
         <div className="hero bg-base-200 min-h-screen">

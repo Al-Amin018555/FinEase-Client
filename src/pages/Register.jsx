@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +16,6 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = async(data) => {
-        console.log(data)
         const { email, password, name, photo } = data;
         try{
           const result =  await createUser(email, password)
@@ -28,7 +28,12 @@ const Register = () => {
           navigate('/')
          
         }catch (error){
-            console.log(error);
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error,
+         });
+                        
         }
 
     };
@@ -38,7 +43,14 @@ const Register = () => {
             .then(() => {
                 navigate('/')
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                  Swal.fire({
+                       icon: "error",
+                     title: "Oops...",
+                     text: error,
+                      });
+              })
+            
     }
     return (
         <div className="hero bg-base-200 min-h-screen">

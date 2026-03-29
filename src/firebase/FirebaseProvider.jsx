@@ -6,7 +6,6 @@ import Loader from '../components/Loader/Loader';
 
 const FirebaseProvider = ({ children }) => {
     const [user, setUser] = useState();
-    console.log(user);
     const [loading, setLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider();

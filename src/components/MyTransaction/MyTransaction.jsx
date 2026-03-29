@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import TransactionCard from "../TransactionCard/TransactionCard";
 import Loader from "../Loader/Loader";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyTransaction = () => {
     const { user } = useAuth();
 
     const [transactions, setTransactions] = useState([])
     const [dataLoading, setDataLoading] = useState(true);
-    console.log(transactions);
+
     useEffect(() => {
 
         fetch(`http://localhost:3000/my-transactions/${user.email}`)
@@ -17,7 +18,13 @@ const MyTransaction = () => {
                 setTransactions(data)
                 setDataLoading(false)
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error,
+                });
+            })
     }, [])
     if (dataLoading) {
         return <Loader></Loader>;

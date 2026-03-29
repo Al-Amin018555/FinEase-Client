@@ -3,10 +3,7 @@ import { use } from "react";
 const budgetPromise = fetch("budgetingTips.json").then(res => res.json());
 
 const BudgetTips = () => {
-
     const tips = use(budgetPromise);
-    console.log(tips);
-
     return (
         <div className="max-w-7xl mx-auto my-8 md:my-12">
 
