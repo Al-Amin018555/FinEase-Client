@@ -10,10 +10,12 @@ import UpdateTransaction from "../components/UpdateTransaction/UpdateTransaction
 import TransactionDetails from "../pages/TransactionDetails";
 import MyProfile from "../pages/MyProfile";
 import Reports from "../pages/Reports";
+import Error from "../pages/Error";
 const router = createBrowserRouter([
     {
         path: "/",
         Component: MainLayout,
+        errorElement:<Error></Error>,
         children: [
             { path: '/', Component: Home },
             {

@@ -3,11 +3,11 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-300 text-base-content border-t border-base-200">
+    <footer className="bg-base-300 text-base-content border-t m-0 border-base-200">
 
       {/* Top Accent Line */}
 
-      <div className="h-1 w-full bg-gradient-to-r from-primary via-secondary to-accent"></div>
+      <div className="h-1 w-full bg-linear-to-r from-primary via-secondary to-accent"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
 
