@@ -1,3 +1,6 @@
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router";
+
 const Banner = () => {
     return (
         <div>
@@ -15,7 +18,20 @@ const Banner = () => {
                         <p className="text-2xl text-primary-content/80">
                             Track income, manage expenses, and hit your savings goals — all in one beautifully designed dashboard built for clarity
                         </p>
-                        <button className="btn bg-accent border-none font-bold text-black btn-primary">Start Tracking</button>
+                        <div className="flex gap-2">
+                            <Link to="/add-transaction">
+                            <button className="btn bg-accent text-accent-content border-none font-bold btn-primary flex items-center gap-2">
+                                <span>Start Tracking</span>
+                                <FaArrowRight className="translate-y-px" />
+                            </button>   
+                        </Link>
+                        <Link to="/reports">
+                            <button className="btn btn-outline hover:bg-accent hover:text-accent-content hover:font-bold hover:border-0">
+                                <span>View Reports</span>
+                                
+                            </button>   
+                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
