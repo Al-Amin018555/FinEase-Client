@@ -9,11 +9,13 @@ const MainLayout = () => {
       <Header />
 
       {/* This takes remaining space */}
-      <main className="grow">
+      <main className="flex-1">
         <Outlet />
       </main>
+      <div>
+        <Footer />
 
-      <Footer />
+      </div>
 
     </div>
   );
