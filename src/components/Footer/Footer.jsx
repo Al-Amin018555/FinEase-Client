@@ -30,19 +30,19 @@ const Footer = () => {
 
             <div className="flex gap-3 mt-4">
 
-              <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <a href="https://www.facebook.com/mdalamin.510400/" target="_blank" className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
                 <FaFacebook />
               </a>
 
-              <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <a href="https://x.com/md_al_amin3799" target="_blank" className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
                 <FaTwitter />
               </a>
 
-              <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <a href="https://github.com/Al-Amin018555" target="_blank" className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
                 <FaGithub />
               </a>
 
-              <a className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
+              <a href="https://www.linkedin.com/in/md-al-amin-475792358/" target="_blank" className="btn btn-circle btn-sm bg-base-100 hover:bg-primary hover:text-white transition">
                 <FaLinkedin />
               </a>
 
@@ -86,17 +86,17 @@ const Footer = () => {
 
             <div className="flex flex-col gap-2">
 
-              <a className="link link-hover hover:text-primary">
+              <Link to='/login' className="link link-hover hover:text-primary">
                 Login
-              </a>
+              </Link>
 
-              <a className="link link-hover hover:text-primary">
+              <Link to='/register' className="link link-hover hover:text-primary">
                 Sign Up
-              </a>
+              </Link>
 
-              <a className="link link-hover hover:text-primary">
+              <Link to='/my-profile' className="link link-hover hover:text-primary">
                 My Profile
-              </a>
+              </Link>
 
             </div>
 
@@ -110,17 +110,17 @@ const Footer = () => {
 
             <div className="flex flex-col gap-2">
 
-              <a className="link link-hover hover:text-primary">
+              <Link to='/privacy-policy' className="link link-hover hover:text-primary">
                 Privacy Policy
-              </a>
+              </Link>
 
-              <a className="link link-hover hover:text-primary">
+              <Link to="/terms-of-service" className="link link-hover hover:text-primary">
                 Terms of Service
-              </a>
+              </Link>
 
-              <a className="link link-hover hover:text-primary">
+              <Link to="/contact" className="link link-hover hover:text-primary">
                 Contact
-              </a>
+              </Link>
 
             </div>
 

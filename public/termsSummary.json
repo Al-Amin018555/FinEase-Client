@@ -1,0 +1,17 @@
+[
+    {
+        "label": "Free to use",
+        "sub": "No hidden charges",
+        "color": "bg-success/10 border-success/30 text-success"
+    },
+    {
+        "label": "Your data",
+        "sub": "You own it always",
+        "color": "bg-primary/10 border-primary/30 text-primary"
+    },
+    {
+        "label": "Fair use",
+        "sub": "Personal use only",
+        "color": "bg-accent/10 border-accent/30 text-accent"
+    }
+]

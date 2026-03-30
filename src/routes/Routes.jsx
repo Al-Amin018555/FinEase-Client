@@ -11,6 +11,9 @@ import TransactionDetails from "../pages/TransactionDetails";
 import MyProfile from "../pages/MyProfile";
 import Reports from "../pages/Reports";
 import Error from "../pages/Error";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfService";
+import Contact from "../pages/Contact";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -76,6 +79,18 @@ const router = createBrowserRouter([
                         <MyProfile></MyProfile>
                     </ProtectedRoute>
                 ),
+            },
+            {
+                path: "privacy-policy",
+                Component: PrivacyPolicy
+            },
+            {
+                path: "terms-of-service",
+                Component: TermsOfService
+            },
+            {
+                path: "contact",
+                Component: Contact
             },
         ],
     },
