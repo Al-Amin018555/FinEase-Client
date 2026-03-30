@@ -13,8 +13,8 @@ const Login = () => {
         const password = form.password.value;
         logIn(email, password)
             .then(() => {
-                location.pathname ? navigate(`/${location.state}`) : navigate('/');
-
+                const from = location.state?.from || "/";
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 Swal.fire({
@@ -29,7 +29,8 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogIn()
             .then(() => {
-                location.pathname ? navigate(`/${location.state}`) : navigate('/');
+                const from = location.state?.from || "/";
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 Swal.fire({
