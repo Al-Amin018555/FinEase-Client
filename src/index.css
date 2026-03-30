@@ -2,26 +2,32 @@
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
-    name: "light";
-    default: true;
-     /* ১. ব্র্যান্ড কালার (Hex Code সহ) */
-  --color-primary: #4f46e5;         /* ইন্ডিগো/নীল (বিশ্বাস ও প্রফেশনালিজম) */
-  --color-primary-content: #ffffff;  /* প্রাইমারি বাটনের ওপর সাদা লেখা */
-  
-  --color-secondary: #10b981;       /* পান্না সবুজ (ইনকাম বা প্রবৃদ্ধি বোঝাতে) */
-  --color-secondary-content: #ffffff; 
-  
-  --color-accent: #f59e0b;          /* উজ্জ্বল কমলা (গোল বা সেভিংস টার্গেট) */
+  name: "light";
+  default: true;
+  --color-primary: #4f46e5;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #10b981;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #f59e0b;
   --color-accent-content: #1e293b;
 
-  /* ২. বেস কালার (UI Layout এর জন্য) */
-  --color-base-100: #ffffff;        /* মেইন ব্যাকগ্রাউন্ড (পুরো পেজ) */
-  --color-base-200: #f8fafc;        /* কার্ড বা সাইডবারের ব্যাকগ্রাউন্ড */
-  --color-base-300: #f1f5f9;        /* ইনপুট ফিল্ড বা বর্ডারের কালার */
-  --color-base-content: #0f172a;    /* মেইন টেক্সট বা ফন্ট কালার (গাঢ় কালো/নীল) */
+  --color-base-100: #ffffff;
+  --color-base-200: #f8fafc;
+  --color-base-300: #f1f5f9;
+  --color-base-content: #0f172a;
 
-  /* ৩. ফিন্যান্স অ্যাপের জন্য মাস্ট-হ্যাভ কালার (অতিরিক্ত) */
-  --color-success: #22c55e;         /* টাকা আসলে (Income) এটি ব্যবহার করবেন */
-  --color-error: #ef4444;           /* টাকা খরচ হলে (Expense) এটি ব্যবহার করবেন */
-  --color-info: #3b82f6;            /* সাধারণ ইনফরমেশন বা নোটিফিকেশন */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #f1f5f9;
 }

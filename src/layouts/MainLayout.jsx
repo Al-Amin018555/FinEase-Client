@@ -4,19 +4,12 @@ import Footer from "../components/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-base-200">
-
+    <div className="flex flex-col min-h-screen bg-base-100">
       <Header />
-
-      {/* This takes remaining space */}
-      <main className="flex-1">
+      <main className="flex-1 bg-base-100">
         <Outlet />
       </main>
-      <div>
-        <Footer />
-
-      </div>
-
+      <Footer />
     </div>
   );
 };
