@@ -10,6 +10,6 @@ const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <FirebaseProvider>
-    <RouterProvider router={router} />,
+    <RouterProvider router={router} />
   </FirebaseProvider>
 );
