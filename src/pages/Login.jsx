@@ -1,18 +1,22 @@
 import { Link, useLocation, useNavigate } from "react-router";
+import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useTitle from "../hooks/useTitle";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
     const { logIn, googleLogIn } = useAuth();
-    useTitle("Login | FinEase")
+    useTitle("Login | FinEase");
+
     const navigate = useNavigate();
     const location = useLocation();
+
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+
         logIn(email, password)
             .then(() => {
                 const from = location.state?.from || "/";
@@ -21,12 +25,11 @@ const Login = () => {
             .catch(error => {
                 Swal.fire({
                     icon: "error",
-                    title: "Oops...",
-                    text: error,
+                    title: "Login Failed",
+                    text: error.message,
                 });
-            })
-
-    }
+            });
+    };
 
     const handleGoogleLogin = () => {
         googleLogIn()
@@ -37,41 +40,100 @@ const Login = () => {
             .catch(error => {
                 Swal.fire({
                     icon: "error",
-                    title: "Oops...",
-                    text: error,
+                    title: "Google Login Failed",
+                    text: error.message,
                 });
-            })
+            });
+    };
 
-    }
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse lg:w-7xl">
-                <div className="text-center w-full lg:text-left">
-                    <h1 className="text-5xl font-bold text-base-content">Stay in Control of Your Money</h1>
-                    <p className="py-6 text-xl text-base-content/70">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-base-200 to-base-300 px-4">
+            <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+                {/* Left Side */}
+                <div className="text-center lg:text-left space-y-4">
+                    <h1 className="text-4xl lg:text-5xl font-bold text-base-content leading-tight">
+                        Stay in Control of Your Money
+                    </h1>
+
+                    <p className="text-base lg:text-lg text-base-content/70">
                         Your financial journey continues here. <br />
-                        Track, plan, and grow your wealth with FinEase.
+                        Track, plan, and grow your wealth with <span className="text-primary font-semibold">FinEase</span>.
                     </p>
-                </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <div className="card-body">
-                        <form onSubmit={handleLogin} className="fieldset">
-                            <label className="label">Email</label>
-                            <input type="email" name="email" className="input w-full focus:border-primary outline-0" placeholder="Email" />
-                            <label className="label">Password</label>
-                            <input type="password" name="password" className="input w-full focus:border-primary outline-0" placeholder="Password" />
-                            <div className="flex justify-between">
-                                <a className="link link-hover">Forgot password?</a>
-                                <Link to="/register" className="text-blue-500 underline">Register</Link>
-                            </div>
-                            <button type="submit" className="btn btn-primary mt-4">Login</button>
-                        </form>
-                        <button onClick={handleGoogleLogin} className="btn bg-base-100 text-black border-info">
-                            <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
-                            Login with Google
-                        </button>
+
+                    <div className="hidden lg:block text-sm text-base-content/60 mt-6">
+                        Manage income • Track expenses • Achieve financial freedom
                     </div>
                 </div>
+
+                {/* Right Side - Card */}
+                <div className="w-full max-w-sm mx-auto">
+                    <div className="card bg-base-100 shadow-2xl rounded-2xl border border-base-300">
+                        <div className="card-body space-y-4">
+
+                            <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
+                            <p className="text-center text-sm text-base-content/60">
+                                Login to continue your journey
+                            </p>
+
+                            {/* Form */}
+                            <form onSubmit={handleLogin} className="space-y-4">
+
+                                <div>
+                                    <label className="label text-sm">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        className="input input-bordered w-full focus:input-primary"
+                                        placeholder="Enter your email"
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="label text-sm">Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        className="input input-bordered w-full focus:input-primary"
+                                        placeholder="Enter your password"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="flex justify-between text-sm">
+                                    <a className="link link-hover text-primary">Forgot password?</a>
+                                    <Link to="/register" className="link link-primary">
+                                        Create account
+                                    </Link>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary w-full mt-2 hover:scale-105 transition-transform duration-200"
+                                >
+                                    Login
+                                </button>
+                            </form>
+
+                            {/* Divider */}
+                            <div className="divider text-xs text-base-content/50">
+                                OR
+                            </div>
+
+                            {/* Google Login */}
+                            <button
+                                onClick={handleGoogleLogin}
+                                className="btn btn-outline w-full flex items-center gap-2 justify-center hover:bg-base-200 transition"
+                            >
+                                <FaGoogle className="text-red-500" />
+                                Continue with Google
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );
