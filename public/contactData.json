@@ -1,23 +1,20 @@
 {
-  "title": "Contact Us",
-  "subtitle": "Have questions about managing your finances? Reach out to us anytime.",
-  "contactInfo": {
-    "email": "support@finease.com",
-    "phone": "+880 1234 567 890",
-    "address": "Dhaka, Bangladesh"
-  },
-  "socialLinks": [
-    {
-      "name": "Facebook",
-      "url": "https://facebook.com"
+    "title": "Contact Us",
+    "subtitle": "Have questions about managing your finances? Reach out to us anytime — we're here to help.",
+    "stats": [
+        { "value": "< 24hrs", "label": "Response Time" },
+        { "value": "Mon – Fri", "label": "Support Days" },
+        { "value": "99%", "label": "Satisfaction" }
+    ],
+    "contactInfo": {
+        "email": "support@finease.com",
+        "phone": "+880 1234 567 890",
+        "address": "Dhaka, Bangladesh"
     },
-    {
-      "name": "Twitter",
-      "url": "https://twitter.com"
-    },
-    {
-      "name": "LinkedIn",
-      "url": "https://linkedin.com"
-    }
-  ]
+    "availability": "Our support team is online — typically replies within a few hours.",
+    "socialLinks": [
+        { "name": "Facebook", "url": "https://facebook.com" },
+        { "name": "Twitter", "url": "https://twitter.com" },
+        { "name": "LinkedIn", "url": "https://linkedin.com" }
+    ]
 }
