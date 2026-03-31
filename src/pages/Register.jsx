@@ -56,12 +56,12 @@ const Register = () => {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="hero-content flex-col lg:flex-row-reverse lg:w-7xl">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Register now!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    <h1 className="text-5xl font-bold text-base-content">Create Your FinEase Account</h1>
+                    <p className="py-6 text-xl text-base-content/70">
+                        Start your journey towards better financial management. <br />
+                        Track your expenses, set goals, and build a secure future.
                     </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

@@ -48,7 +48,7 @@ const Login = () => {
             <div className="hero-content flex-col lg:flex-row-reverse lg:w-7xl">
                 <div className="text-center w-full lg:text-left">
                     <h1 className="text-5xl font-bold text-base-content">Stay in Control of Your Money</h1>
-                    <p className="py-6 text-2xl text-base-content/70">
+                    <p className="py-6 text-xl text-base-content/70">
                         Your financial journey continues here. <br />
                         Track, plan, and grow your wealth with FinEase.
                     </p>
