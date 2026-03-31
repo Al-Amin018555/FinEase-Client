@@ -1,9 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import useAuth from "../hooks/UseAuth";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
     const { logIn, googleLogIn } = useAuth();
+    useTitle("Login | FinEase")
     const navigate = useNavigate();
     const location = useLocation();
     const handleLogin = (e) => {

@@ -3,10 +3,11 @@ import TransactionCard from "../TransactionCard/TransactionCard";
 import Loader from "../Loader/Loader";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const MyTransaction = () => {
     const { user } = useAuth();
-
+    useTitle("Transactions | FinEase")
     const [transactions, setTransactions] = useState([])
     const [dataLoading, setDataLoading] = useState(true);
 

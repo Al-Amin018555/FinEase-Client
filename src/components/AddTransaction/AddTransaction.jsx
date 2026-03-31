@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const AddTransaction = () => {
 
   const { user } = useAuth();
-
+  useTitle("Add Transaction | FinEase")
   const { register, handleSubmit, reset, watch } = useForm();
 
   const type = watch("type");

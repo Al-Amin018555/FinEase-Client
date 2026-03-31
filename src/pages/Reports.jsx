@@ -13,11 +13,12 @@ import {
     ResponsiveContainer
 } from "recharts";
 import useAuth from "../hooks/useAuth";
+import useTitle from "../hooks/useTitle";
 const Reports = () => {
     const { user } = useAuth()
     const [transactions, setTransactions] = useState([]);
     const [month, setMonth] = useState("");
-
+    useTitle("Reports | FinEase")
     // fetch data
     useEffect(() => {
         fetch(`https://fin-ease-server-seven.vercel.app/my-transactions/${user.email}`)

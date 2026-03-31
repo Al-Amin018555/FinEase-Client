@@ -4,11 +4,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, setUser, profileUpdate,googleLogIn} = useAuth();
     const navigate = useNavigate();
+    useTitle("Register | FinEase")
     const {
         register,
         handleSubmit,

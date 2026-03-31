@@ -4,11 +4,12 @@ import Swal from "sweetalert2";
 import { FaUserEdit, FaEnvelope } from "react-icons/fa";
 import { auth } from "../../firebase.init";
 import useAuth from "../hooks/useAuth";
+import useTitle from "../hooks/useTitle";
 
 const MyProfile = () => {
 
   const { user, setUser } = useAuth();
-
+  useTitle("Profile | FinEase")
   const [name, setName] = useState(user?.displayName);
   const [photo, setPhoto] = useState(user?.photoURL);
 

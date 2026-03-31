@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useTitle from "../hooks/useTitle";
 
 const SectionIcon = ({ path }) => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
@@ -12,7 +13,7 @@ const PrivacyPolicy = () => {
     const [privacySections, setPrivacySections] = useState([]);
     const [summaryCards, setSummaryCards] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    useTitle("Privacy Policy | FinEase")
     useEffect(() => {
         Promise.all([
             fetch("/privacy.json").then((res) => res.json()),

@@ -1,11 +1,12 @@
 import { useLoaderData } from "react-router";
 import { FaTag, FaCalendarAlt, FaMoneyBillWave } from "react-icons/fa";
 import { MdCategory } from "react-icons/md";
+import useTitle from "../hooks/useTitle";
 
 const TransactionDetails = () => {
 
   const transaction = useLoaderData();
-
+  useTitle("Transaction Details | FinEase")
   const { type, category, amount, date, description } = transaction;
 
   return (
