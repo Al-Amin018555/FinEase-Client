@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useTitle from "../hooks/useTitle";
 import useAuth from "../hooks/useAuth";
@@ -10,6 +11,8 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -58,7 +61,8 @@ const Login = () => {
 
                     <p className="text-base lg:text-lg text-base-content/70">
                         Your financial journey continues here. <br />
-                        Track, plan, and grow your wealth with <span className="text-primary font-semibold">FinEase</span>.
+                        Track, plan, and grow your wealth with{" "}
+                        <span className="text-primary font-semibold">FinEase</span>.
                     </p>
 
                     <div className="hidden lg:block text-sm text-base-content/60 mt-6">
@@ -66,12 +70,15 @@ const Login = () => {
                     </div>
                 </div>
 
-                {/* Right Side - Card */}
+                {/* Right Side */}
                 <div className="w-full max-w-sm mx-auto">
                     <div className="card bg-base-100 shadow-2xl rounded-2xl border border-base-300">
                         <div className="card-body space-y-4">
 
-                            <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
+                            <h2 className="text-2xl font-bold text-center">
+                                Welcome Back
+                            </h2>
+
                             <p className="text-center text-sm text-base-content/60">
                                 Login to continue your journey
                             </p>
@@ -79,6 +86,7 @@ const Login = () => {
                             {/* Form */}
                             <form onSubmit={handleLogin} className="space-y-4">
 
+                                {/* Email */}
                                 <div>
                                     <label className="label text-sm">Email</label>
                                     <input
@@ -90,24 +98,40 @@ const Login = () => {
                                     />
                                 </div>
 
+                                {/* Password with Toggle */}
                                 <div>
                                     <label className="label text-sm">Password</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        className="input input-bordered w-full focus:input-primary"
-                                        placeholder="Enter your password"
-                                        required
-                                    />
+
+                                    <div className="relative">
+                                        <input
+                                            type={showPassword ? "text" : "password"}
+                                            name="password"
+                                            className="input input-bordered w-full focus:input-primary pr-10"
+                                            placeholder="Enter your password"
+                                            required
+                                        />
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-lg text-base-content/60 hover:text-primary"
+                                        >
+                                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        </button>
+                                    </div>
                                 </div>
 
+                                {/* Links */}
                                 <div className="flex justify-between text-sm">
-                                    <a className="link link-hover text-primary">Forgot password?</a>
+                                    <a className="link link-hover text-primary">
+                                        Forgot password?
+                                    </a>
                                     <Link to="/register" className="link link-primary">
                                         Create account
                                     </Link>
                                 </div>
 
+                                {/* Login Button */}
                                 <button
                                     type="submit"
                                     className="btn btn-primary w-full mt-2 hover:scale-105 transition-transform duration-200"
