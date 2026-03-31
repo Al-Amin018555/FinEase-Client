@@ -57,9 +57,9 @@ const Login = () => {
                     <div className="card-body">
                         <form onSubmit={handleLogin} className="fieldset">
                             <label className="label">Email</label>
-                            <input type="email" name="email" className="input focus:border-primary outline-0" placeholder="Email" />
+                            <input type="email" name="email" className="input w-full focus:border-primary outline-0" placeholder="Email" />
                             <label className="label">Password</label>
-                            <input type="password" name="password" className="input focus:border-primary outline-0" placeholder="Password" />
+                            <input type="password" name="password" className="input w-full focus:border-primary outline-0" placeholder="Password" />
                             <div className="flex justify-between">
                                 <a className="link link-hover">Forgot password?</a>
                                 <Link to="/register" className="text-blue-500 underline">Register</Link>

@@ -68,21 +68,21 @@ const Register = () => {
                     <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
                             <label className="label">Name</label>
-                            <input focus:border-primary outline-0 type="text" name="name" className="input focus:border-primary outline-0" {...register("name", { required: true })} placeholder="Name" />
+                            <input focus:border-primary outline-0 type="text" name="name" className="input w-full focus:border-primary outline-0" {...register("name", { required: true })} placeholder="Name" />
                             {errors.name && <span className="text-red-500">This field is required</span>}
 
                             <label className="label">Email</label>
-                            <input focus:border-primary outline-0 type="email" name="email" className="input focus:border-primary outline-0" {...register("email", { required: true })} placeholder="Email" />
+                            <input focus:border-primary outline-0 type="email" name="email" className="input w-full focus:border-primary outline-0" {...register("email", { required: true })} placeholder="Email" />
                             {errors.email && <span className="text-red-500">This field is required</span>}
 
                             <label className="label">PhotoURL</label>
-                            <input focus:border-primary outline-0 type="text" name="photo" className="input focus:border-primary outline-0" {...register("photo")} placeholder="PhotURL" />
+                            <input focus:border-primary outline-0 type="text" name="photo" className="input w-full focus:border-primary outline-0" {...register("photo")} placeholder="PhotURL" />
 
                             <label className="label">Password</label>
                             <div className="relative">
                                 <input focus:border-primary outline-0
                                     type={showPassword ? "text" : "password"}
-                                    className="input focus:border-primary outline-0"
+                                    className="input w-full focus:border-primary outline-0"
                                     placeholder="Password"
                                     {...register("password", {
                                         required: "Password is required",
