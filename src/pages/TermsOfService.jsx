@@ -101,16 +101,16 @@ const TermsOfService = () => {
                     <p className="text-primary-content/70 mb-6">
                         We're happy to clarify anything. Reach out to us anytime.
                     </p>
-                    <a href="mailto:support@finease.com"
+                    <Link to='/contact' href="mailto:support@finease.com"
                         className="btn bg-white text-primary border-none font-bold hover:bg-base-200">
                         Contact Us
-                    </a>
+                    </Link>
                 </div>
             </div>
 
             {/* Back link */}
             <div className="text-center mt-8">
-                <Link to="/" className="text-primary hover:underline text-sm font-medium">
+                <Link to="/" className="text-primary-content btn btn-primary  text-sm font-medium">
                     ← Back to Home
                 </Link>
             </div>

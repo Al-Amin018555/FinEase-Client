@@ -97,10 +97,10 @@ const PrivacyPolicy = () => {
                     <p className="text-primary-content/70 mb-6">
                         We're happy to help. Reach out to us anytime.
                     </p>
-                    <a href="mailto:support@finease.com"
+                    <Link to='/contact' href="mailto:support@finease.com"
                         className="btn bg-white text-primary border-none font-bold hover:bg-base-200">
                         Contact Us
-                    </a>
+                    </Link>
                 </div>
             </div>
 
