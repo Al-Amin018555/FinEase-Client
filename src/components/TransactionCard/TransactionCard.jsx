@@ -18,44 +18,40 @@ const TransactionCard = ({ transaction, transactions, setTransactions }) => {
 
   const { _id, type, category, amount, date } = transaction;
 
+  // Format currency
+  const formattedAmount = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(amount);
+
   const getCategoryIcon = () => {
-
     switch (category) {
-
       case "Food":
-        return <FaUtensils className="text-orange-500 text-xl" />
-
+        return <FaUtensils />;
       case "Shopping":
-        return <FaShoppingCart className="text-purple-500 text-xl" />
-
+        return <FaShoppingCart />;
       case "Transport":
-        return <FaBus className="text-blue-500 text-xl" />
-
+        return <FaBus />;
       case "Entertainment":
-        return <FaFilm className="text-pink-500 text-xl" />
-
+        return <FaFilm />;
       case "Salary":
-        return <FaMoneyBillWave className="text-green-500 text-xl" />
-
+        return <FaMoneyBillWave />;
       case "Investment":
-        return <FaChartLine className="text-emerald-500 text-xl" />
-
+        return <FaChartLine />;
       default:
-        return <FaTag className="text-gray-500 text-xl" />
+        return <FaTag />;
     }
-
   };
 
   const handleDelete = (id) => {
-
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Delete transaction?",
+      text: "This action cannot be undone",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonColor: "#6366f1",
+      cancelButtonColor: "#ef4444",
+      confirmButtonText: "Delete",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://fin-ease-server-seven.vercel.app/transaction/delete/${id}`, {
@@ -64,116 +60,117 @@ const TransactionCard = ({ transaction, transactions, setTransactions }) => {
           .then(res => res.json())
           .then(data => {
             if (data.deletedCount) {
+              const remaining = transactions.filter(t => t._id !== id);
+              setTransactions(remaining);
 
-              const remainingTransactions = transactions.filter(transaction => transaction._id !== id);
-              setTransactions(remainingTransactions)
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
+              Swal.fire("Deleted!", "Transaction removed.", "success");
             }
-          })
-          .catch(error => {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: error,
-            });
-          
-      })
+          });
+      }
+    });
+  };
 
-  }
-});
-  }
+  return (
+    <div
+      className={`group relative rounded-2xl p-[1px] 
+      bg-gradient-to-br 
+      ${type === "Income"
+          ? "from-green-400 via-emerald-500 to-green-600"
+          : "from-red-400 via-rose-500 to-red-600"
+        }
+      hover:scale-[1.04] transition duration-300`}
+    >
 
-return (
+      {/* Inner Card */}
+      <div className="bg-base-100 rounded-2xl p-5 h-full backdrop-blur-xl shadow-lg">
 
-  <div
-    className={`card bg-base-100 shadow-md border-l-4 
-      transition transform hover:scale-105 duration-300
-      ${type === "Income" ? "border-green-500" : "border-red-500"}`}
-  >
+        {/* Top Row */}
+        <div className="flex justify-between items-center mb-4">
 
-    <div className="card-body">
+          {/* Type Badge */}
+          <span
+            className={`px-3 py-1 rounded-full text-xs font-semibold tracking-wide
+              ${type === "Income"
+                ? "bg-green-100 text-green-600"
+                : "bg-red-100 text-red-500"
+              }`}
+          >
+            {type}
+          </span>
 
-      {/* Title */}
+          {/* Date */}
+          <span className="text-xs text-base-content/60 flex items-center gap-1">
+            <FaCalendarAlt /> {date}
+          </span>
+        </div>
 
-      <h2
-        className={`card-title text-xl font-bold
-          ${type === "Income" ? "text-green-600" : "text-red-500"}`}
-      >
-        {type}
-      </h2>
+        {/* Category */}
+        <div className="flex items-center gap-4 mb-5">
 
-      {/* Category */}
+          {/* Icon Box */}
+          <div
+            className={`p-3 rounded-xl text-xl shadow-sm
+              ${type === "Income"
+                ? "bg-green-100 text-green-600"
+                : "bg-red-100 text-red-500"
+              }`}
+          >
+            {getCategoryIcon()}
+          </div>
 
-      <p className="flex items-center gap-2">
+          <div>
+            <p className="text-xs text-base-content/60 uppercase tracking-wide">
+              Category
+            </p>
+            <h3 className="text-lg font-semibold">{category}</h3>
+          </div>
 
-        {getCategoryIcon()}
+        </div>
 
-        <span className="font-semibold">Category:</span>
+        {/* Amount Section */}
+        <div className="mb-5">
 
-        {category}
+          <p className="text-xs text-base-content/60 uppercase tracking-wide mb-1">
+            Amount
+          </p>
 
-      </p>
+          <h2
+            className={`text-3xl font-extrabold flex items-center gap-1
+              ${type === "Income" ? "text-green-600" : "text-red-500"}`}
+          >
+            <MdAttachMoney className="text-2xl" />
+            {formattedAmount}
+          </h2>
 
-      {/* Amount */}
+        </div>
 
-      <p className="flex items-center gap-2">
+        {/* Actions */}
+        <div className="flex justify-end gap-2 opacity-80 group-hover:opacity-100 transition">
 
-        <MdAttachMoney className="text-yellow-500 text-xl" />
+          <Link to={`/transaction/${_id}`}>
+            <button className="p-2 rounded-lg hover:bg-blue-100 text-blue-600 transition">
+              <FiEye size={18} />
+            </button>
+          </Link>
 
-        <span className="font-semibold">Amount:</span>
+          <Link to={`/transaction/update/${_id}`}>
+            <button className="p-2 rounded-lg hover:bg-yellow-100 text-yellow-600 transition">
+              <FiEdit size={18} />
+            </button>
+          </Link>
 
-        ${amount}
-
-      </p>
-
-      {/* Date */}
-
-      <p className="flex items-center gap-2">
-
-        <FaCalendarAlt className="text-blue-500 text-xl" />
-
-        <span className="font-semibold">Date:</span>
-
-        {date}
-
-      </p>
-
-      {/* Buttons */}
-
-      <div className="card-actions justify-end mt-4 gap-2">
-        <Link to={`/transaction/${_id}`}>
-          <button className="btn btn-info text-primary-content btn-sm flex items-center gap-2">
-            <FiEye className="text-lg" />
-            View
+          <button
+            onClick={() => handleDelete(_id)}
+            className="p-2 rounded-lg hover:bg-red-100 text-red-500 transition"
+          >
+            <FiTrash2 size={18} />
           </button>
-        </Link>
-        <Link to={`/transaction/update/${_id}`}>
-          <button className="btn btn-warning text-warning-content btn-sm flex items-center gap-2">
-            <FiEdit className="text-lg" />
-            Update
-          </button>
-        </Link>
 
-        <button onClick={() => handleDelete(_id)} className="btn btn-error btn-sm flex items-center gap-2">
-
-          <FiTrash2 className="text-lg" />
-
-          Delete
-
-        </button>
+        </div>
 
       </div>
-
     </div>
-
-  </div>
-
-);
-
+  );
 };
 
 export default TransactionCard;
