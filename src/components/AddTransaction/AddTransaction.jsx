@@ -2,19 +2,21 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
+import { useNavigate } from "react-router";
 
 const AddTransaction = () => {
 
   const { user } = useAuth();
-  useTitle("Add Transaction | FinEase")
-  const { register, handleSubmit, reset, watch } = useForm();
+  const navigate = useNavigate();
+  useTitle("Add Transaction | FinEase");
 
+  const { register, handleSubmit, reset, watch } = useForm();
   const type = watch("type");
 
-  const onSubmit = (data) => {
+  const onSubmit = (formData) => {
 
     const transactionData = {
-      ...data,
+      ...formData,
       email: user?.email,
       name: user?.displayName,
       uid: user?.uid,
@@ -30,6 +32,7 @@ const AddTransaction = () => {
     })
       .then(res => res.json())
       .then(data => {
+
         if (data.insertedId) {
           Swal.fire({
             position: "top-end",
@@ -38,18 +41,24 @@ const AddTransaction = () => {
             showConfirmButton: false,
             timer: 1500
           });
+
+          navigate("/my-transactions");
+          reset();
         }
       })
-
-
-    reset();
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: "Something went wrong",
+          text: error.message,
+        });
+      });
   };
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4">
 
-      {/* Page Heading */}
-
+      {/* Heading */}
       <div className="text-center mb-10 space-y-2">
         <h4 className="text-accent font-bold tracking-wide">
           MANAGE FINANCES
@@ -64,8 +73,7 @@ const AddTransaction = () => {
         </p>
       </div>
 
-      {/* Card */}
-
+      {/* Form Card */}
       <div className="flex justify-center">
 
         <form
@@ -74,17 +82,16 @@ const AddTransaction = () => {
         >
 
           {/* Type */}
-
           <label className="label font-semibold">Type</label>
-
           <select
             {...register("type", { required: true })}
-            className={`select select-bordered w-full outline-0 ${type === "Income"
-              ? "border-success"
-              : type === "Expense"
+            className={`select select-bordered w-full ${
+              type === "Income"
+                ? "border-success"
+                : type === "Expense"
                 ? "border-error"
                 : ""
-              }`}
+            }`}
           >
             <option value="">Select Type</option>
             <option value="Income">Income</option>
@@ -92,12 +99,10 @@ const AddTransaction = () => {
           </select>
 
           {/* Category */}
-
           <label className="label font-semibold">Category</label>
-
           <select
             {...register("category", { required: true })}
-            className="select select-bordered w-full outline-0"
+            className="select select-bordered w-full"
           >
             <option value="">Select Category</option>
             <option>Salary</option>
@@ -110,61 +115,50 @@ const AddTransaction = () => {
           </select>
 
           {/* Amount */}
-
           <label className="label font-semibold">Amount</label>
-
           <input
             type="number"
             {...register("amount", { required: true })}
-            className="input input-bordered w-full outline-0"
+            className="input input-bordered w-full"
             placeholder="Enter amount"
           />
 
           {/* Description */}
-
           <label className="label font-semibold">Description</label>
-
           <textarea
             {...register("description")}
-            className="textarea textarea-bordered w-full outline-0"
+            className="textarea textarea-bordered w-full"
             placeholder="Transaction details"
           />
 
           {/* Date */}
-
           <label className="label font-semibold">Date</label>
-
           <input
             type="date"
             {...register("date", { required: true })}
-            className="input input-bordered w-full outline-0"
+            className="input input-bordered w-full"
           />
 
-          {/* User Email */}
-
+          {/* Email */}
           <label className="label font-semibold">User Email</label>
-
           <input
             type="email"
             value={user?.email || ""}
             readOnly
-            className="input input-bordered bg-base-100 w-full outline-0"
+            className="input input-bordered bg-base-100 w-full"
           />
 
-          {/* User Name */}
-
-          <label className="label font-semibold w-full outline-0">User Name</label>
-
+          {/* Name */}
+          <label className="label font-semibold">User Name</label>
           <input
             type="text"
             value={user?.displayName || ""}
             readOnly
-            className="input input-bordered bg-base-100 w-full outline-0"
+            className="input input-bordered bg-base-100 w-full"
           />
 
           {/* Button */}
-
-          <button className="btn btn-primary w-full  mt-4 text-lg">
+          <button className="btn btn-primary w-full mt-4 text-lg">
             Add Transaction
           </button>
 
