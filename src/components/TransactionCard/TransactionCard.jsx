@@ -72,8 +72,8 @@ const TransactionCard = ({ transaction, transactions, setTransactions }) => {
 
   return (
     <div
-      className={`group relative rounded-2xl p-[1px] 
-      bg-gradient-to-br 
+      className={`group relative rounded-2xl p-px 
+      bg-linear-to-br 
       ${type === "Income"
           ? "from-green-400 via-emerald-500 to-green-600"
           : "from-red-400 via-rose-500 to-red-600"
