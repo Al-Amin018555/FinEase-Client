@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { AuthContext } from '../context/AuthContext';
 import { auth } from '../../firebase.init';
 import { useEffect, useState } from 'react';
@@ -28,6 +28,9 @@ const FirebaseProvider = ({ children }) => {
             photoURL,
         })
     }
+    const passwordReset = (email) => {
+        return sendPasswordResetEmail(auth,email)
+    }
     const authInfo = {
         createUser,
         logIn,
@@ -36,6 +39,7 @@ const FirebaseProvider = ({ children }) => {
         profileUpdate,
         user,
         setUser,
+        passwordReset,
     };
 
     useEffect(() => {

@@ -6,9 +6,10 @@ import useTitle from "../hooks/useTitle";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-    const { logIn, googleLogIn } = useAuth();
+    const { logIn, googleLogIn, passwordReset } = useAuth();
     useTitle("Login | FinEase");
-
+    const [email, setEmail] = useState("");
+    console.log(email);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -48,6 +49,31 @@ const Login = () => {
                 });
             });
     };
+    
+    const handleForgetPassword = () => {
+    if (!email) {
+        return Swal.fire({
+            icon: "warning",
+            title: "Please enter your email first",
+        });
+    }
+
+    passwordReset(email)
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Reset Email Sent",
+                text: "Check your email inbox",
+            });
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.message,
+            });
+        });
+};
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-base-200 to-base-300 px-4">
@@ -92,6 +118,7 @@ const Login = () => {
                                     <input
                                         type="email"
                                         name="email"
+                                        onChange={(e) => setEmail(e.target.value)}
                                         className="input input-bordered w-full focus:input-primary"
                                         placeholder="Enter your email"
                                         required
@@ -123,9 +150,9 @@ const Login = () => {
 
                                 {/* Links */}
                                 <div className="flex justify-between text-sm">
-                                    <a className="link link-hover text-primary">
+                                    <Link onClick={handleForgetPassword} className="link link-hover text-primary">
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                     <Link to="/register" className="link link-primary">
                                         Create account
                                     </Link>
